@@ -19,7 +19,7 @@ const MainLayout: React.FC = () => {
   const { viewMode, isAdminAuthenticated } = useStore();
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF9F6] text-[#121316]">
+    <div className="min-h-screen flex flex-col bg-white text-[#0F172A]">
       {/* Top Announcement Bar */}
       <AnnouncementBar />
 

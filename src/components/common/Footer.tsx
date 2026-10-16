@@ -1,14 +1,12 @@
 import React from 'react';
 import { useStore } from '../../context/StoreContext';
 import { 
-  ShieldCheck, 
   MapPin, 
   Phone, 
   Mail, 
   Clock, 
   MessageCircle, 
-  Lock,
-  ArrowUpRight
+  Lock
 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -21,24 +19,24 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#070B14] text-slate-300 pt-16 pb-12 border-t border-sky-950/70">
+    <footer className="bg-[#0B192C] text-slate-300 pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
           
           {/* Brand Info (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="p-0.5 rounded-xl bg-gradient-to-tr from-sky-500 to-cyan-400 shadow-[0_0_15px_rgba(14,165,233,0.35)]">
+              <div className="p-0.5 rounded-xl border border-sky-400/40 bg-[#0080FF] shadow-sm">
                 <img
                   src={config.logoUrl || '/src/assets/images/cases.jfif'}
                   alt={config.storeName}
-                  className="h-10 w-10 object-cover rounded-[10px]"
+                  className="h-10 w-auto object-contain rounded-lg"
                   referrerPolicy="no-referrer"
                 />
               </div>
               <div>
-                <h3 className="text-2xl font-extrabold text-white tracking-tight font-display uppercase leading-none">
+                <h3 className="text-2xl font-extrabold text-white tracking-tight font-display leading-none">
                   {config.storeName}
                 </h3>
                 <span className="text-[10px] tracking-widest uppercase font-semibold text-sky-400 mt-1 block">
@@ -47,8 +45,8 @@ export const Footer: React.FC = () => {
               </div>
             </div>
             
-            <p className="text-xs text-slate-400 font-light leading-relaxed max-w-sm">
-              {config.subtitle}. Diseñamos y comercializamos equipaje de alta gama, pensado para resistir el rigor de los viajes frecuentes con la máxima sofisticación estética.
+            <p className="text-xs text-slate-400 font-normal leading-relaxed max-w-sm">
+              {config.subtitle}. Diseñamos y comercializamos equipaje de alta resistencia y diseño contemporáneo, pensado para resistir el rigor de los viajes frecuentes con la máxima sofisticación.
             </p>
 
             <div className="pt-2 space-y-2.5 text-xs text-slate-400">
@@ -168,15 +166,15 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-bold text-white uppercase tracking-wider text-sky-400">
               Canal de Venta Directa
             </h4>
-            <p className="text-xs text-slate-400 font-light leading-relaxed">
+            <p className="text-xs text-slate-400 font-normal leading-relaxed">
               ¿Dudas sobre dimensiones o stock? Consulta directamente a nuestro equipo por WhatsApp.
             </p>
 
             <a
-              href={`https://wa.me/${config.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hola%2C%20quisiera%20asesoramiento%20sobre%20equipaje`}
+              href={`https://wa.me/${config.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hola%20${encodeURIComponent(config.storeName)}%2C%20quisiera%20asesoramiento%20sobre%20equipaje`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white text-xs font-bold rounded-xl shadow-[0_4px_16px_rgba(5,150,105,0.3)] transition-all duration-200 active:scale-95"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-sm transition-all duration-150 active:scale-95"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Chatear por WhatsApp</span>

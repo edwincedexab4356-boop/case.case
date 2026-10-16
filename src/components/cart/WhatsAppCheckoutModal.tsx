@@ -93,18 +93,18 @@ export const WhatsAppCheckoutModal: React.FC<WhatsAppCheckoutModalProps> = ({ is
       <div className="flex min-h-full items-center justify-center p-4 sm:p-6">
         <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden z-10 animate-fadeIn">
           
-          {/* Header with Brand Ocean Gradient */}
-          <div className="bg-gradient-to-r from-slate-950 via-[#032e4b] to-slate-900 border-b border-sky-400/20 text-white p-5 flex items-center justify-between">
+          {/* Header with Solid Brand Cobalt */}
+          <div className="bg-[#0B192C] border-b border-sky-950 text-white p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 to-cyan-400 text-white flex items-center justify-center shadow-xs">
+              <div className="w-9 h-9 rounded-xl bg-[#0080FF] text-white flex items-center justify-center shadow-xs">
                 <MessageCircle className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="font-extrabold text-sm tracking-wide font-display">
                   {orderConfirmed ? 'Pedido Preparado para WhatsApp' : 'Finalizar Pedido por WhatsApp'}
                 </h3>
-                <p className="text-xs text-sky-200/80 font-light">
-                  {orderConfirmed ? 'Paso final: confirmar envío de mensaje' : 'Atención directa y personalizada sin comisiones'}
+                <p className="text-xs text-sky-300 font-normal">
+                  {orderConfirmed ? 'Paso final: enviar mensaje por WhatsApp' : 'Atención directa y personalizada de nuestro equipo'}
                 </p>
               </div>
             </div>
@@ -288,12 +288,12 @@ export const WhatsAppCheckoutModal: React.FC<WhatsAppCheckoutModalProps> = ({ is
               <div className="pt-3">
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-4 bg-emerald-700 text-white hover:bg-emerald-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Generar pedido y abrir WhatsApp</span>
                 </button>
-                <p className="text-[11px] text-stone-500 text-center mt-2">
+                <p className="text-[11px] text-slate-500 text-center mt-2">
                   No se cobrará nada automáticamente. El pedido se confirmará directamente por WhatsApp con nuestro equipo.
                 </p>
               </div>
@@ -324,7 +324,7 @@ export const WhatsAppCheckoutModal: React.FC<WhatsAppCheckoutModalProps> = ({ is
                 <button
                   type="button"
                   onClick={handleOpenWhatsApp}
-                  className="w-full py-3.5 px-4 bg-emerald-700 text-white hover:bg-emerald-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow"
+                  className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 active:scale-98 text-white rounded-xl text-xs font-semibold uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-2 shadow-sm cursor-pointer"
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>Abrir WhatsApp y Enviar Pedido</span>
@@ -333,7 +333,7 @@ export const WhatsAppCheckoutModal: React.FC<WhatsAppCheckoutModalProps> = ({ is
                 <button
                   type="button"
                   onClick={handleCopyMessage}
-                  className="w-full py-2.5 px-4 bg-white border border-stone-300 text-stone-700 hover:bg-stone-50 rounded-lg text-xs font-medium transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 active:scale-98 rounded-xl text-xs font-medium transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Copy className="w-3.5 h-3.5" />
                   <span>{copied ? '¡Copiado con éxito!' : 'Copiar texto del pedido'}</span>

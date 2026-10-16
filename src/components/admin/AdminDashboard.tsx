@@ -178,20 +178,22 @@ export const AdminDashboard: React.FC = () => {
     <div className="min-h-screen bg-[#F7F6F2] text-stone-900 pb-16">
       
       {/* Admin Top Header */}
-      <header className="bg-[#121316] text-white border-b border-stone-800 sticky top-0 z-30">
+      <header className="bg-[#0B192C] text-white border-b border-slate-800 sticky top-0 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img
-              src={config.logoUrl || '/src/assets/images/cases.jfif'}
-              alt={config.storeName}
-              className="h-8 w-8 object-cover rounded-lg shadow-xs"
-              referrerPolicy="no-referrer"
-            />
+            <div className="p-0.5 rounded-lg bg-[#0080FF] border border-sky-400/40">
+              <img
+                src={config.logoUrl || '/src/assets/images/cases.jfif'}
+                alt={config.storeName}
+                className="h-7 w-auto object-contain rounded"
+                referrerPolicy="no-referrer"
+              />
+            </div>
             <span className="font-display font-bold text-lg text-white">
               {config.storeName}
             </span>
-            <span className="text-stone-500">/</span>
-            <span className="text-xs font-semibold text-stone-300 uppercase tracking-wider bg-stone-800 px-2.5 py-1 rounded">
+            <span className="text-slate-500">/</span>
+            <span className="text-xs font-semibold text-sky-400 uppercase tracking-wider bg-slate-800/80 px-2.5 py-1 rounded">
               Panel Administrativo
             </span>
           </div>
@@ -199,7 +201,7 @@ export const AdminDashboard: React.FC = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setViewMode('store')}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-medium rounded-lg transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0080FF] hover:bg-[#006ee0] text-white text-xs font-medium rounded-lg transition-all duration-150 active:scale-95 shadow-2xs cursor-pointer"
             >
               <Eye className="w-3.5 h-3.5" />
               <span>Ver tienda pública</span>
@@ -207,7 +209,7 @@ export const AdminDashboard: React.FC = () => {
 
             <button
               onClick={logoutAdmin}
-              className="px-3 py-1.5 text-xs text-stone-400 hover:text-white transition-colors"
+              className="px-3 py-1.5 text-xs text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               Cerrar sesión
             </button>
@@ -222,10 +224,10 @@ export const AdminDashboard: React.FC = () => {
         <div className="flex items-center gap-2 border-b border-slate-200 pb-3 mb-8 overflow-x-auto">
           <button
             onClick={() => setActiveTab('kpis')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-150 whitespace-nowrap cursor-pointer active:scale-98 ${
               activeTab === 'kpis'
-                ? 'bg-gradient-to-r from-sky-600 to-cyan-700 text-white shadow-xs'
-                : 'bg-white text-slate-700 hover:bg-sky-50 hover:text-sky-700 border border-slate-200'
+                ? 'bg-[#0080FF] text-white shadow-2xs'
+                : 'bg-white text-slate-700 hover:bg-sky-50 hover:text-[#0080FF] border border-slate-200'
             }`}
           >
             <BarChart3 className="w-4 h-4" />
@@ -234,10 +236,10 @@ export const AdminDashboard: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('products')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-150 whitespace-nowrap cursor-pointer active:scale-98 ${
               activeTab === 'products'
-                ? 'bg-gradient-to-r from-sky-600 to-cyan-700 text-white shadow-xs'
-                : 'bg-white text-slate-700 hover:bg-sky-50 hover:text-sky-700 border border-slate-200'
+                ? 'bg-[#0080FF] text-white shadow-2xs'
+                : 'bg-white text-slate-700 hover:bg-sky-50 hover:text-[#0080FF] border border-slate-200'
             }`}
           >
             <Package className="w-4 h-4" />
@@ -246,16 +248,16 @@ export const AdminDashboard: React.FC = () => {
 
           <button
             onClick={() => setActiveTab('orders')}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-150 whitespace-nowrap cursor-pointer active:scale-98 ${
               activeTab === 'orders'
-                ? 'bg-gradient-to-r from-sky-600 to-cyan-700 text-white shadow-xs'
-                : 'bg-white text-slate-700 hover:bg-sky-50 hover:text-sky-700 border border-slate-200'
+                ? 'bg-[#0080FF] text-white shadow-2xs'
+                : 'bg-white text-slate-700 hover:bg-sky-50 hover:text-[#0080FF] border border-slate-200'
             }`}
           >
             <ShoppingBag className="w-4 h-4" />
             <span>Gestión de Pedidos ({orders.length})</span>
             {pendingOrders.length > 0 && (
-              <span className="w-5 h-5 rounded-full bg-sky-500 text-white flex items-center justify-center text-[10px] font-mono-num font-bold">
+              <span className="w-5 h-5 rounded-full bg-white text-[#0080FF] flex items-center justify-center text-[10px] font-mono-num font-bold">
                 {pendingOrders.length}
               </span>
             )}
@@ -266,10 +268,10 @@ export const AdminDashboard: React.FC = () => {
               setDraftConfig(config);
               setActiveTab('config');
             }}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all duration-150 whitespace-nowrap cursor-pointer active:scale-98 ${
               activeTab === 'config'
-                ? 'bg-gradient-to-r from-sky-600 to-cyan-700 text-white shadow-xs'
-                : 'bg-white text-slate-700 hover:bg-sky-50 hover:text-sky-700 border border-slate-200'
+                ? 'bg-[#0080FF] text-white shadow-2xs'
+                : 'bg-white text-slate-700 hover:bg-sky-50 hover:text-[#0080FF] border border-slate-200'
             }`}
           >
             <Settings className="w-4 h-4" />
@@ -871,7 +873,7 @@ export const AdminDashboard: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="px-5 py-2.5 bg-[#121316] text-white rounded-lg text-xs font-semibold hover:bg-stone-800 transition-colors flex items-center gap-2 shadow-sm"
+                  className="px-5 py-2.5 bg-[#0080FF] hover:bg-[#006ee0] text-white rounded-lg text-xs font-semibold transition-all duration-150 active:scale-98 flex items-center gap-2 shadow-sm cursor-pointer"
                 >
                   <Save className="w-4 h-4" />
                   <span>Guardar y Aplicar Cambios</span>
@@ -1024,7 +1026,7 @@ export const AdminDashboard: React.FC = () => {
                   </button>
                   <button
                     type="submit"
-                    className="px-5 py-2 bg-[#121316] text-white rounded-lg font-semibold hover:bg-stone-800"
+                    className="px-5 py-2 bg-[#0080FF] hover:bg-[#006ee0] text-white rounded-lg font-semibold transition-all duration-150 active:scale-98 shadow-sm cursor-pointer"
                   >
                     Guardar Producto
                   </button>

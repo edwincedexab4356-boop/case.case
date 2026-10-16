@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Info } from 'lucide-react';
+import { Star, ShieldCheck } from 'lucide-react';
 
 export const TestimonialsSection: React.FC = () => {
   const testimonials = [
@@ -8,15 +8,15 @@ export const TestimonialsSection: React.FC = () => {
       role: 'Arquitecto y viajero frecuente',
       city: 'Santiago de Chile',
       product: 'Aviator Hardshell Carry-On Pro',
-      comment: 'El compartimento frontal para la laptop cambió mi forma de pasar los controles en aeropuertos. Las ruedas Hinomoto son impresionantemente silenciosas, incluso sobre adoquines.',
+      comment: 'El compartimento frontal para la laptop cambió mi forma de pasar los controles en aeropuertos. Las ruedas Hinomoto son silenciosas incluso sobre pavimentos difíciles.',
       rating: 5
     },
     {
       name: 'Clara Domínguez',
-      role: 'Directora de Operaciones Internacionales',
+      role: 'Directora de Operaciones',
       city: 'Buenos Aires',
       product: 'Horizon Check-In M 68cm',
-      comment: 'La maleta mediana tiene una capacidad asombrosa gracias al fuelle expansible. Viajo con trajes y documentos sensibles y el marco ofrece una seguridad inmejorable.',
+      comment: 'La maleta mediana tiene una capacidad excelente gracias al fuelle expansible. Viajo con trajes y documentos sensibles y el armazón ofrece una rigidez impecable.',
       rating: 5
     },
     {
@@ -24,23 +24,23 @@ export const TestimonialsSection: React.FC = () => {
       role: 'Fotógrafo documental',
       city: 'Montevideo',
       product: 'Heritage Weekender Canvas & Leather 45L',
-      comment: 'El bolso duffel tiene acabados de cuero dignos de una marca de lujo europea. El compartimento aislado para calzado me permite mantener el equipo fotográfico limpio.',
+      comment: 'El bolso duffel tiene acabados de cuero de primera categoría. El compartimento aislado para calzado me permite mantener el equipo fotográfico aislado y limpio.',
       rating: 5
     }
   ];
 
   return (
-    <section className="py-16 bg-[#FAF9F6] border-b border-stone-200">
+    <section className="py-16 bg-[#F8FAFC] border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider block mb-2">
+            <span className="text-xs font-bold text-sky-800 uppercase tracking-wider block mb-2">
               Experiencias de Viaje
             </span>
-            <h2 className="text-3xl font-bold text-[#121316] font-display">
-              Opiniones de la Comunidad
+            <h2 className="text-3xl font-bold text-slate-950 font-display">
+              Opiniones de Clientes
             </h2>
           </div>
         </div>
@@ -50,25 +50,31 @@ export const TestimonialsSection: React.FC = () => {
           {testimonials.map((t, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-white border border-stone-200 shadow-sm flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs hover:border-[#0080FF]/40 transition-colors flex flex-col justify-between"
             >
               <div>
-                {/* Rating stars */}
-                <div className="flex items-center gap-1 mb-4 text-amber-500">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
+                {/* Rating & Verified Tag */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-1 text-amber-500">
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    ))}
+                  </div>
+                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                    <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                    <span>Compra Verificada</span>
+                  </span>
                 </div>
 
-                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-light italic">
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                   "{t.comment}"
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-stone-100">
-                <p className="text-xs font-bold text-stone-900">{t.name}</p>
-                <p className="text-[11px] text-stone-500">{t.role} · {t.city}</p>
-                <p className="text-[11px] text-stone-400 mt-0.5">Equipaje: {t.product}</p>
+              <div className="mt-6 pt-4 border-t border-slate-100">
+                <p className="text-xs font-bold text-slate-950">{t.name}</p>
+                <p className="text-[11px] text-slate-500">{t.role} · {t.city}</p>
+                <p className="text-[11px] text-[#0080FF] font-medium mt-0.5">Equipaje: {t.product}</p>
               </div>
             </div>
           ))}

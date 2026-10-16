@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Product } from '../../types/store';
 import { useStore } from '../../context/StoreContext';
-import { Eye, ShoppingBag, MessageCircle, Check } from 'lucide-react';
+import { Eye, ShoppingBag, MessageCircle } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -33,49 +33,49 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       onClick={handleCardClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group cursor-pointer flex flex-col bg-white rounded-2xl border border-slate-200/90 overflow-hidden transition-all duration-300 ease-out hover:border-sky-300 hover:shadow-[0_12px_30px_rgba(2,132,199,0.12)] hover:-translate-y-1.5"
+      className="group cursor-pointer flex flex-col bg-white rounded-2xl border border-slate-200 overflow-hidden transition-all duration-200 ease-out hover:border-[#0080FF]/50 hover:shadow-lg hover:shadow-sky-500/10 hover:-translate-y-1"
     >
-      {/* Product Image Stage (65-70% height emphasis) */}
-      <div className="relative aspect-[4/3] bg-gradient-to-b from-slate-50 to-[#F1F5F9]/60 overflow-hidden flex items-center justify-center p-4">
+      {/* Product Image Stage */}
+      <div className="relative aspect-[4/3] bg-[#F8FAFC] overflow-hidden flex items-center justify-center p-4 border-b border-slate-100">
         <img
           src={product.images[0]}
           alt={product.name}
-          className="w-full h-full object-contain object-center transition-transform duration-500 ease-out group-hover:scale-108"
+          className="w-full h-full object-contain object-center transition-transform duration-500 ease-out group-hover:scale-105"
           referrerPolicy="no-referrer"
           loading="lazy"
         />
 
-        {/* Top Indicators - Brand Badges */}
+        {/* Top Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-1 items-start">
           {product.badge && (
-            <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-0.5 bg-gradient-to-r from-sky-600 to-cyan-700 text-white rounded-md shadow-xs">
+            <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 bg-[#0080FF] text-white rounded-md shadow-2xs">
               {product.badge}
             </span>
           )}
           {discountPercentage > 0 && (
-            <span className="text-[10px] font-bold px-2 py-0.5 bg-cyan-700 text-white rounded-md shadow-xs">
+            <span className="text-[10px] font-bold px-2 py-0.5 bg-[#0B1E38] text-sky-200 rounded-md shadow-2xs">
               -{discountPercentage}% OFF
             </span>
           )}
         </div>
 
-        {/* Stock warning if low */}
+        {/* Low Stock Badge */}
         {product.stock <= product.lowStockThreshold && product.stock > 0 && (
-          <span className="absolute bottom-3 left-3 text-[10px] font-bold text-amber-900 bg-amber-50/90 backdrop-blur-xs border border-amber-200 px-2 py-0.5 rounded-md shadow-xs">
+          <span className="absolute bottom-3 left-3 text-[10px] font-bold text-amber-900 bg-amber-50 border border-amber-300 px-2 py-0.5 rounded-md shadow-2xs">
             Últimas {product.stock} unidades
           </span>
         )}
 
-        {/* Quick View overlay button */}
-        <div className={`absolute inset-0 bg-sky-950/10 backdrop-blur-[2px] flex items-center justify-center gap-2 transition-all duration-300 ${
-          hovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+        {/* Quick View Button */}
+        <div className={`absolute bottom-3 right-3 transition-all duration-200 ${
+          hovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
         }`}>
           <button
             onClick={(e) => {
               e.stopPropagation();
               setSelectedProduct(product);
             }}
-            className="p-3 bg-white text-sky-700 rounded-full shadow-lg hover:bg-sky-50 transition-all duration-200 active:scale-95"
+            className="p-2.5 bg-white text-slate-800 rounded-xl shadow-md border border-slate-200 hover:text-[#0080FF] hover:border-[#0080FF] transition-all duration-150 active:scale-95 cursor-pointer"
             title="Vista rápida"
             aria-label="Ver detalles"
           >
@@ -87,9 +87,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       {/* Product Content */}
       <div className="p-5 flex flex-col flex-1 justify-between bg-white">
         <div>
-          {/* Unboxed Metadata: Category & Spec */}
+          {/* Metadata */}
           <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
-            <span className="uppercase tracking-wider font-bold text-[10px] text-sky-700 bg-sky-50 px-2 py-0.5 rounded">
+            <span className="uppercase tracking-wider font-bold text-[10px] text-[#0080FF] bg-sky-50 px-2 py-0.5 rounded">
               {product.categoryName}
             </span>
             {product.volume && (
@@ -107,16 +107,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
 
           {/* Product Title */}
-          <h3 className="text-sm font-bold text-slate-900 line-clamp-1 group-hover:text-sky-600 transition-colors">
+          <h3 className="text-sm font-bold text-slate-950 line-clamp-1 group-hover:text-[#0080FF] transition-colors">
             {product.name}
           </h3>
 
           {/* Short description */}
-          <p className="text-xs text-slate-500 mt-1.5 line-clamp-2 leading-relaxed font-light">
+          <p className="text-xs text-slate-500 mt-1.5 line-clamp-2 leading-relaxed font-normal">
             {product.shortDescription}
           </p>
 
-          {/* Color variant dots if available */}
+          {/* Color variant dots */}
           {product.colors.length > 1 && (
             <div className="flex items-center gap-1.5 mt-3 pt-2.5 border-t border-slate-100">
               <span className="text-[11px] text-slate-400 mr-1 font-medium">Color:</span>
@@ -128,9 +128,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     e.stopPropagation();
                     setSelectedColor(c.name);
                   }}
-                  className={`w-4 h-4 rounded-full border transition-all duration-200 ${
+                  className={`w-4 h-4 rounded-full border transition-all duration-150 cursor-pointer ${
                     selectedColor === c.name
-                      ? 'ring-2 ring-sky-500 scale-125 border-white shadow-xs'
+                      ? 'ring-2 ring-[#0080FF] scale-125 border-white shadow-xs'
                       : 'border-slate-300 opacity-80 hover:opacity-100 hover:scale-110'
                   }`}
                   style={{ backgroundColor: c.hex }}
@@ -147,9 +147,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Pricing & Functional Actions */}
         <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between gap-2">
           
-          {/* Price with tabular numerals */}
+          {/* Price */}
           <div className="flex items-baseline gap-1.5">
-            <span className="text-base font-extrabold text-sky-700 font-mono-num">
+            <span className="text-base font-extrabold text-[#0080FF] font-mono-num">
               {config.currencySymbol}{product.price}
             </span>
             {product.originalPrice && (
@@ -164,20 +164,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {/* Direct WhatsApp Quick Buy */}
             <button
               onClick={handleWhatsAppQuickBuy}
-              className="p-2.5 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/90 rounded-xl transition-all duration-200 active:scale-95 cursor-pointer"
+              className="p-2.5 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl transition-all duration-150 active:scale-95 cursor-pointer"
               title="Consultar por WhatsApp"
               aria-label="Comprar por WhatsApp"
             >
               <MessageCircle className="w-4 h-4" />
             </button>
 
-            {/* Add to Cart button with brand azure gradient */}
+            {/* Add to Cart button */}
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 addToCart(product, selectedColor, product.sizes[0], 1);
               }}
-              className="flex items-center gap-1.5 px-3.5 py-2.5 bg-gradient-to-r from-sky-600 to-cyan-700 text-white hover:from-sky-500 hover:to-cyan-600 rounded-xl text-xs font-semibold shadow-sm hover:shadow-md hover:shadow-sky-500/25 transition-all duration-200 active:scale-95 cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-2.5 bg-[#0080FF] text-white hover:bg-[#006ee0] active:scale-95 rounded-xl text-xs font-semibold shadow-xs hover:shadow-md hover:shadow-sky-500/20 transition-all duration-150 cursor-pointer"
               aria-label="Añadir a mi maleta"
             >
               <ShoppingBag className="w-3.5 h-3.5" />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from '../../context/StoreContext';
-import { Compass, CheckCircle2, ArrowRight, Sparkles, Plane, Briefcase, Calendar, Shield } from 'lucide-react';
+import { Compass, CheckCircle2, ArrowRight, Plane, Briefcase, Calendar, Shield } from 'lucide-react';
 
 interface QuizOption {
   id: string;
@@ -31,7 +31,7 @@ const DURATION_OPTIONS: QuizOption[] = [
   {
     id: 'business',
     label: 'Viaje de negocios',
-    description: '1 a 3 días · Foco en laptop, documentos y rapidez',
+    description: '1 a 3 días · Foco en laptop, documentos y agilidad',
     icon: 'Shield'
   }
 ];
@@ -51,8 +51,8 @@ const PREFERENCE_OPTIONS: QuizOption[] = [
   },
   {
     id: 'heritage',
-    label: 'Elegancia artesanal',
-    description: 'Lona encerada y cuero genuino para viajes de autor',
+    label: 'Elegancia en lona y cuero',
+    description: 'Lona encerada y cuero genuino para viajes de fin de semana',
     icon: 'Briefcase'
   },
   {
@@ -88,25 +88,24 @@ export const LuggageFinder: React.FC = () => {
     if (selectedDuration === 'medium') {
       return products.find(p => p.id === 'prod-mediana-01') || products[0];
     }
-    // Default weekend hardshell
     return products.find(p => p.id === 'prod-cabina-01') || products[0];
   }, [products, selectedDuration, selectedPreference]);
 
   return (
-    <section id="equipaje-ideal" className="py-16 bg-gradient-to-b from-sky-50/50 via-[#F8FAFC] to-white border-b border-slate-200">
+    <section id="equipaje-ideal" className="py-16 bg-[#F8FAFC] border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-sky-100 text-sky-800 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-            <Compass className="w-3.5 h-3.5 text-sky-600" />
-            <span>Asistente Inteligente de Viaje</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-slate-200 text-sky-800 rounded-md text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
+            <Compass className="w-3.5 h-3.5 text-[#0080FF]" />
+            <span>Guía de Elección de Equipaje</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 font-display [text-wrap:balance]">
             Encuentra el equipaje ideal para tu próximo viaje
           </h2>
-          <p className="text-base text-slate-600 mt-3 font-light">
-            Selecciona la duración de tu escapada y tu preferencia de viaje para descubrir la recomendación precisa de nuestros especialistas en equipaje.
+          <p className="text-base text-slate-600 mt-2.5 font-normal">
+            Selecciona la duración de tu escapada y tu prioridad para descubrir la recomendación precisa según tus necesidades.
           </p>
         </div>
 
@@ -117,8 +116,8 @@ export const LuggageFinder: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             
             {/* Step 1: Duration */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:border-sky-200 transition-colors">
-              <label className="text-xs font-bold text-sky-900 uppercase tracking-wider block mb-3.5">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs">
+              <label className="text-xs font-bold text-slate-900 uppercase tracking-wider block mb-3.5">
                 1. ¿Cuánto tiempo durará tu viaje?
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -130,15 +129,15 @@ export const LuggageFinder: React.FC = () => {
                       onClick={() => setSelectedDuration(opt.id)}
                       className={`text-left p-4 rounded-xl border transition-all duration-200 text-xs cursor-pointer ${
                         isActive
-                          ? 'border-sky-500 bg-sky-50/80 ring-2 ring-sky-500/30 shadow-xs'
-                          : 'border-slate-200 bg-white hover:border-sky-300 hover:bg-sky-50/20'
+                          ? 'border-[#0080FF] bg-sky-50/60 ring-2 ring-[#0080FF]/25 shadow-xs'
+                          : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className={`font-bold text-sm ${isActive ? 'text-sky-950' : 'text-slate-800'}`}>
+                        <span className={`font-bold text-sm ${isActive ? 'text-[#0080FF]' : 'text-slate-900'}`}>
                           {opt.label}
                         </span>
-                        {isActive && <CheckCircle2 className="w-4 h-4 text-sky-600" />}
+                        {isActive && <CheckCircle2 className="w-4 h-4 text-[#0080FF]" />}
                       </div>
                       <p className="text-slate-500 text-[11px] leading-relaxed">{opt.description}</p>
                     </button>
@@ -148,8 +147,8 @@ export const LuggageFinder: React.FC = () => {
             </div>
 
             {/* Step 2: Preference */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-sm hover:border-sky-200 transition-colors">
-              <label className="text-xs font-bold text-sky-900 uppercase tracking-wider block mb-3.5">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xs">
+              <label className="text-xs font-bold text-slate-900 uppercase tracking-wider block mb-3.5">
                 2. ¿Cuál es tu prioridad principal?
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -161,15 +160,15 @@ export const LuggageFinder: React.FC = () => {
                       onClick={() => setSelectedPreference(opt.id)}
                       className={`text-left p-4 rounded-xl border transition-all duration-200 text-xs cursor-pointer ${
                         isActive
-                          ? 'border-sky-500 bg-sky-50/80 ring-2 ring-sky-500/30 shadow-xs'
-                          : 'border-slate-200 bg-white hover:border-sky-300 hover:bg-sky-50/20'
+                          ? 'border-[#0080FF] bg-sky-50/60 ring-2 ring-[#0080FF]/25 shadow-xs'
+                          : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1.5">
-                        <span className={`font-bold text-sm ${isActive ? 'text-sky-950' : 'text-slate-800'}`}>
+                        <span className={`font-bold text-sm ${isActive ? 'text-[#0080FF]' : 'text-slate-900'}`}>
                           {opt.label}
                         </span>
-                        {isActive && <CheckCircle2 className="w-4 h-4 text-sky-600" />}
+                        {isActive && <CheckCircle2 className="w-4 h-4 text-[#0080FF]" />}
                       </div>
                       <p className="text-slate-500 text-[11px] leading-relaxed">{opt.description}</p>
                     </button>
@@ -180,19 +179,16 @@ export const LuggageFinder: React.FC = () => {
 
           </div>
 
-          {/* Recommendation Column with signature azure highlight */}
+          {/* Recommendation Column */}
           <div className="lg:col-span-5 flex flex-col">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-sky-200 shadow-xl flex-1 flex flex-col justify-between relative overflow-hidden">
+            <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200 shadow-md flex-1 flex flex-col justify-between">
               
-              {/* Subtle azure glow corner */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-sky-400/10 rounded-full blur-2xl pointer-events-none" />
-
               <div>
                 <div className="flex items-center justify-between text-xs text-slate-500 mb-3.5">
-                  <span className="font-bold text-sky-700 bg-sky-50 border border-sky-200 px-2.5 py-0.5 rounded-full text-[11px] tracking-wide uppercase">
-                    Recomendación Inteligente
+                  <span className="font-bold text-[#0080FF] bg-sky-50 border border-sky-200 px-2.5 py-0.5 rounded-md text-[11px] tracking-wide uppercase">
+                    Modelo Recomendado
                   </span>
-                  <span className="font-medium text-slate-600">{matchedProduct.categoryName}</span>
+                  <span className="font-semibold text-slate-700">{matchedProduct.categoryName}</span>
                 </div>
 
                 <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-50 mb-4 border border-slate-200 p-2 group">
@@ -203,7 +199,7 @@ export const LuggageFinder: React.FC = () => {
                     referrerPolicy="no-referrer"
                   />
                   {matchedProduct.badge && (
-                    <span className="absolute top-3 left-3 bg-gradient-to-r from-sky-600 to-cyan-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-sm">
+                    <span className="absolute top-3 left-3 bg-[#0080FF] text-white text-[10px] font-bold px-2.5 py-1 rounded-md shadow-xs">
                       {matchedProduct.badge}
                     </span>
                   )}
@@ -234,7 +230,7 @@ export const LuggageFinder: React.FC = () => {
                 </div>
 
                 <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-2xl font-bold text-sky-700 font-mono-num">
+                  <span className="text-2xl font-bold text-[#0080FF] font-mono-num">
                     {config.currencySymbol}{matchedProduct.price}
                   </span>
                   {matchedProduct.originalPrice && (
@@ -249,13 +245,13 @@ export const LuggageFinder: React.FC = () => {
               <div className="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => setSelectedProduct(matchedProduct)}
-                  className="flex-1 py-3 px-4 bg-gradient-to-r from-sky-600 to-cyan-700 text-white text-xs font-bold rounded-xl shadow-md shadow-sky-500/20 hover:shadow-sky-500/35 hover:-translate-y-0.5 active:scale-95 transition-all text-center cursor-pointer"
+                  className="flex-1 py-3 px-4 bg-[#0080FF] text-white text-xs font-bold rounded-xl shadow-xs hover:bg-[#006ee0] hover:-translate-y-0.5 active:scale-95 transition-all text-center cursor-pointer"
                 >
                   Ver especificación
                 </button>
                 <button
                   onClick={() => addToCart(matchedProduct)}
-                  className="py-3 px-4 bg-slate-100 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300 border border-slate-200 text-slate-800 text-xs font-semibold rounded-xl transition-all text-center cursor-pointer active:scale-95"
+                  className="py-3 px-4 bg-slate-100 hover:bg-sky-50 hover:text-[#0080FF] hover:border-sky-300 border border-slate-200 text-slate-800 text-xs font-semibold rounded-xl transition-all text-center cursor-pointer active:scale-95"
                 >
                   Añadir a mi maleta
                 </button>
